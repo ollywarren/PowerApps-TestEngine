@@ -407,7 +407,7 @@ namespace Microsoft.PowerApps.TestEngine.Tests.PowerApps
         [InlineData("")]
         [InlineData("{}")]
         [InlineData("{ controls: [] }")]
-        public async Task LoadPowerAppsObjectModelAsyncWithNoModelTest(string jsObjectModelString)
+        public async Task LoadPowerAppsObjectModelAsyncWithNoModelTest(string? jsObjectModelString)
         {
             MockSingleTestInstanceState.Setup(x => x.GetLogger()).Returns(MockLogger.Object);
             MockTestInfraFunctions.Setup(x => x.AddScriptTagAsync(It.IsAny<string>(), It.IsAny<string>())).Returns(Task.CompletedTask);

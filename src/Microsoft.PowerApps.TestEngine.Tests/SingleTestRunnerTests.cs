@@ -282,6 +282,7 @@ namespace Microsoft.PowerApps.TestEngine.Tests
             VerifyFinallyExecution(testData.testResultDirectory, 1, 0, 1);
         }
 
+        [Theory]
         public async Task SingleTestRunnerHandlesExceptionsThrownCorrectlyHelper(Action<Exception> additionalMockSetup)
         {
             var singleTestRunner = new SingleTestRunner(MockTestReporter.Object,
