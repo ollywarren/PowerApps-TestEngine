@@ -237,7 +237,7 @@ namespace Microsoft.PowerApps.TestEngine.Tests.TestInfra
         [Fact]
         public async Task EndTestRunSuccessTest()
         {
-            MockBrowserContext.Setup(x => x.CloseAsync()).Returns(Task.CompletedTask);
+            MockBrowserContext.Setup(x => x.CloseAsync(It.IsAny<BrowserContextCloseOptions>())).Returns(Task.CompletedTask);
             MockPage.Setup(x => x.WaitForRequestFinishedAsync(It.IsAny<PageWaitForRequestFinishedOptions>())).Returns(Task.FromResult(MockRequest.Object));
 
             var playwrightTestInfraFunctions = new PlaywrightTestInfraFunctions(MockTestState.Object, MockSingleTestInstanceState.Object,
@@ -245,7 +245,7 @@ namespace Microsoft.PowerApps.TestEngine.Tests.TestInfra
 
             await playwrightTestInfraFunctions.EndTestRunAsync();
 
-            MockBrowserContext.Verify(x => x.CloseAsync(), Times.Once);
+			MockBrowserContext.Verify(x => x.CloseAsync(It.IsAny<BrowserContextCloseOptions>()), Times.Once);
         }
 
         [Fact]
